@@ -38,28 +38,28 @@ int main() {
 
 
 	//1970年山手線の駅出力
-	std::cout << "1970年山手線の駅:" << endl;
+	cout << "1970年山手線の駅:" << endl;
 	for (auto station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
-		std::cout << *station << "\n";
+		cout << *station << "\n";
 	}
-	std::cout << endl;
+	cout << endl;
 
 	//田端の前に西日暮里に追加
-	for (std::list<const char*>::iterator station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
+	for (list<const char*>::iterator station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
 		if (*station == "Tabata") {
 			station = yamanoteLineStation.insert(station, "Nishi-Nippori");
 			++station;
 		}
 	}
 	//2019年山手線の駅出力（西日暮里追加した）
-	std::cout << "2019年山手線の駅:" << endl;
+	cout << "2019年山手線の駅:" << endl;
 	for (auto station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
-		std::cout << *station << "\n";
+		cout << *station << "\n";
 	}
-	std::cout << endl;
+	cout << endl;
 
 	//田町の前に高輪ゲートウェイに追加
-	for (std::list<const char*>::iterator station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
+	for (list<const char*>::iterator station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
 		if (*station == "Tamachi") {
 			station = yamanoteLineStation.insert(station, "Takanawa Gateway");
 			++station;
@@ -67,11 +67,11 @@ int main() {
 	}
 
 	//2020年山手線の駅出力（高輪ゲートウェイ追加した）
-	std::cout << "2020年山手線の駅:" << endl;
+	cout << "2020年山手線の駅:" << endl;
 	for (auto station = yamanoteLineStation.begin(); station != yamanoteLineStation.end(); station++) {
-		std::cout << *station << "\n";
+		cout << *station << "\n";
 	}
-	std::cout << endl;
+	cout << endl;
 
 	return 0;
 }
