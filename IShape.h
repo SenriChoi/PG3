@@ -1,0 +1,9 @@
+#pragma once
+class IShape
+{
+public:
+	virtual void Size()=0;//âºëzä÷êî
+	virtual void Draw()=0;//âºëzä÷êî
+
+};
+
