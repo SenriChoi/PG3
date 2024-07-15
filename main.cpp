@@ -13,7 +13,7 @@ void measureCopyTime(const std::string& str) {
     //時間計算
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     //出力
-    std::cout << "Time taken to copy the string: " << duration << " µs" << std::endl;
+    std::cout << "コピー： " << duration << "μs" << std::endl;
 }
 
 //移動時間計算＋出力
@@ -27,12 +27,14 @@ void measureMoveTime(std::string&& str) {
     //時間計算
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     //出力
-    std::cout << "Time taken to move the string: " << duration << " µs" << std::endl;
+    std::cout << "移動： " << duration << "μs" << std::endl;
 }
 
 int main() {
-    //文字列string with 100,000 'a'
-    std::string a(10000000, 'a');
+    //文字列string with 1000,000 'a'
+    std::string a(1000000, 'a');
+
+    std::cout << "1000000文字を移動とコピーで比較しました" << std::endl;
 
     //コピー
     measureCopyTime(a);
