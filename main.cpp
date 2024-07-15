@@ -1,32 +1,44 @@
-﻿#include <stdio.h>
-#include <iostream>
-#include <thread>
+﻿#include <iostream>
+#include <string>
+#include <chrono>
 
-
-using namespace std;
-
-//関数の定義
-void Thread1() {
-	cout << "Thread1" << endl;
+//コピー時間計算＋出力
+void measureCopyTime(const std::string& str) {
+    //開始
+    auto start = std::chrono::high_resolution_clock::now();
+    //内容コピー
+    std::string copy = str;
+    //終了
+    auto end = std::chrono::high_resolution_clock::now();
+    //時間計算
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    //出力
+    std::cout << "Time taken to copy the string: " << duration << " µs" << std::endl;
 }
 
-void Thread2() {
-	cout << "Thread2" << endl;
-}
-
-void Thread3() {
-	cout << "Thread3" << endl;
+//移動時間計算＋出力
+void measureMoveTime(std::string&& str) {
+    //開始
+    auto start = std::chrono::high_resolution_clock::now();
+    //内容移動
+    std::string moved = std::move(str);
+    //終了
+    auto end = std::chrono::high_resolution_clock::now();
+    //時間計算
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    //出力
+    std::cout << "Time taken to move the string: " << duration << " µs" << std::endl;
 }
 
 int main() {
-	thread thread1(Thread1);
-	thread1.join();
+    //文字列string with 100,000 'a'
+    std::string a(10000000, 'a');
 
-	thread thread2(Thread2);
-	thread2.join();
+    //コピー
+    measureCopyTime(a);
 
-	thread thread3(Thread3);
-	thread3.join();
+    //移動
+    measureMoveTime(std::move(a));
 
-	return 0;
+    return 0;
 }
